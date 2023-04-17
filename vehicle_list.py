@@ -1,4 +1,4 @@
-import dbcon from .database.dbcon
+from database.dbcon import dbcon
 
 #import list of the vehicles from the database
 class VehicleList(dbcon):
