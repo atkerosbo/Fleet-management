@@ -1,13 +1,17 @@
 #conecting to the local database
-import sqlite3
+import pypyodbc as pyodbc
 
-
-class dbcon:
+#connect the server
+class dbconnection:
     def __init__(self):
-        self.db = "fleet_management.db"
-        self.conn = sqlite3.connect(self.db)
-        self.c = self.conn.cursor()
+        self.server = 'DESKTOP-HH6PBH8'
+        self.database = 'fleet_mng_vehicles'
+        self.username = 'sa'
+        self.password = '1234'
+        self.conn = pyodbc.connect('DRIVER={SQL Server};SERVER='+self.server+';DATABASE='+self.database+';UID='+self.username+';PWD='+self.password)
+        self.cursor = self.conn.cursor()
 
-    def __del__(self):
-        self.conn.close()
-        
+    
+
+#server name DESKTOP-HH6PBH8
+#database name fleet_mng_vehicles

@@ -1,7 +1,7 @@
-from database.dbcon import dbcon
+from database.dbcon import dbconnection
 
 #import list of the vehicles from the database
-class VehicleList(dbcon):
+class VehicleList(dbconnection):
     def __init__(self):
         super().__init__()
         self.c.execute("SELECT * FROM vehicle")
