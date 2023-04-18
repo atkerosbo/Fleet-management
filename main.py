@@ -20,8 +20,8 @@ def load_frame2():
     frame2.grid_propagate(False)
     frame2.grid(row=0, column=0, sticky="nsew")
 
-    for vehicle_id in VehicleList:
-        tk.Label(frame2, text=vehicle_id, bg=bg_color, fg="white", font=("Tkmenu", 16)).pack()
+    #for vehicle_id in VehicleList().get_vehicles():
+    #    tk.Label(frame2, text=vehicle_id, bg=bg_color, fg="white", font=("Tkmenu", 16)).pack()
     
     tk.Button(frame2, text="Go back", bg="#D74B1B", fg="white", font=("Tkmenu", 16), activebackground="#ED8B01", command=lambda:load_frame1()).pack()
 

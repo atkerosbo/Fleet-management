@@ -1,10 +1,9 @@
-import get_vehicle_list from .get_vehicle_list
-
+from vehicle_list import VehicleList
 #Highlight and display the vehicle that needs mainenece
 
 def get_vehicle_list():
-    vehicle_list = []
-    for vehicle in vehicles:
+    vehicle_list = [VehicleList]
+    for vehicle in VehicleList:
         vehicle_list.append(vehicle[0])
     return vehicle_list
 
