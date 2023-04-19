@@ -1,10 +1,17 @@
-import dbcon from .database.dbcon
+from database.dbcon import dbconnection
 #import drivers from the database
-class DriverList(dbcon):
-    def __init__(self):
+
+dbconnection()
+class Driver: #class for the driver
+    def __init__(self, driver_id, name, dob, expirience, km):
         super().__init__()
         self.c.execute("SELECT * FROM driver")
         self.drivers = self.c.fetchall()
+        self.id = driver_id
+        self.name = name
+        self.dob = dob
+        self.expirience = expirience
+        self.km = km
         self.c.close()
 
     def __del__(self):

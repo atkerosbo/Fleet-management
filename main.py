@@ -19,11 +19,11 @@ def load_frame2():
     frame2 = tk.Frame(root, width=800, height=800, bg=bg_color)
     frame2.grid_propagate(False)
     frame2.grid(row=0, column=0, sticky="nsew")
-
-    #for vehicle_id in VehicleList().get_vehicles():
-    #    tk.Label(frame2, text=vehicle_id, bg=bg_color, fg="white", font=("Tkmenu", 16)).pack()
-    
     tk.Button(frame2, text="Go back", bg="#D74B1B", fg="white", font=("Tkmenu", 16), activebackground="#ED8B01", command=lambda:load_frame1()).pack()
+
+    vehicle_list = VehicleList()
+    tk.Label(frame2, text=vehicle_list, bg=bg_color, fg="white", font=("Tkmenu", 16)).pack()
+    
 
 def load_frame1():
     frame1 = tk.Frame(root, width=800, height=800, bg=bg_color)
