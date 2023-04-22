@@ -19,7 +19,7 @@ conn_str = ('DRIVER={SQL Server};'
            )
 
 # db = DBCon(conn_str)
-# result = db.execute("SELECT * FROM [fleet_mng_vehicles].[dbo].[vehicle]")
+# result = db.execute("SELECT * FROM [fleet_mng_vehicles].[dbo].[drivers]")
 # print(result)
 
 # #connect the server
