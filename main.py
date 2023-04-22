@@ -1,6 +1,6 @@
 import tkinter as tk 
 from PIL import ImageTk
-from vehicle_list import VehicleList
+from dbcon import DBCon
 
 root = tk.Tk()
 #run app
@@ -21,8 +21,28 @@ def load_frame2():
     frame2.grid(row=0, column=0, sticky="nsew")
     tk.Button(frame2, text="Go back", bg="#D74B1B", fg="white", font=("Tkmenu", 16), activebackground="#ED8B01", command=lambda:load_frame1()).pack()
 
-    vehicle_list = VehicleList()
-    tk.Label(frame2, text=vehicle_list, bg=bg_color, fg="white", font=("Tkmenu", 16)).pack()
+    conn_str = ('DRIVER={SQL Server};'
+            'SERVER=DESKTOP-HH6PBH8;'
+            'DATABASE=fleet_mng_vehicles;'
+            'uid=sa;'
+            'pwd=hubbabubba2020;'
+            'Trusted_Connection=yes;'
+           )
+    db = DBCon(conn_str)
+    vehicles = db.execute("SELECT * FROM [fleet_mng_vehicles].[dbo].[vehicle]")
+    vehicle_str = ""
+    for vehicle in vehicles:
+            vehicle_str += "\nVehicle ID: {}\nMake: {}\nYear: {}\nKm run: {}\nFuel: {}\nKm Service: {}\nKm service prediction: {}".format(vehicle[0], vehicle[1], vehicle[2], vehicle[3],vehicle[4],vehicle[5],vehicle[6],)
+
+    vehicle_text = tk.Text(frame2, bg=bg_color, fg="white", font=("Tkmenu", 16))
+    vehicle_text.insert(tk.END, vehicle_str)
+    vehicle_text.pack()
+
+
+    # db= DBCon(conn_str)
+    # vehicle_list = db.execute("SELECT * FROM [fleet_mng_vehicles].[dbo].[vehicle]")
+
+    # tk.Label(frame2, text=vehicle_list, bg=bg_color, fg="white", font=("Tkmenu", 16)).pack()
     
 
 def load_frame1():

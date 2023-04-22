@@ -1,60 +1,47 @@
 import pyodbc as odbc
-from pyodbc import connect
-
-#connect the server
-conn_str = (r'DRIVER={SQL Server};'
-            r'SERVER=DESKTOP-HH6PBH8;'
-            r'DATABASE=fleet_mng_vehicles;'
-            r'Trusted_Connection=yes;'
-                    )
-conn = odbc.connect(conn_str)
 
 
-#reading the data from the database
+class DBCon:
+    def __init__(self, conn_str):
+        self.conn = odbc.connect(conn_str)
+        self.cursor = self.conn.cursor()
+    
+    def execute(self, query):
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
 
-def read(conn,table):
-    print("Read")
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM "+table+";")
-    for row in cursor:
-        print(f"row = {row}")
+conn_str = ('DRIVER={SQL Server};'
+            'SERVER=DESKTOP-HH6PBH8;'
+            'DATABASE=fleet_mng_vehicles;'
+            'uid=sa;'
+            'pwd=hubbabubba2020;'
+            'Trusted_Connection=yes;'
+           )
 
+# db = DBCon(conn_str)
+# result = db.execute("SELECT * FROM [fleet_mng_vehicles].[dbo].[vehicle]")
+# print(result)
 
-#create
-
-# def create(conn):
-#     print("Create")
-#     cursor = conn.cursor()
-#     cursor.execute("INSERT INTO vehicle VALUES (?,?,?,?,?,?,?);", (3, "Mercedes", 2017, 120000, 2, 1, 1))
-#     conn.commit()
-#     read(conn)   
-
-
-# #update
-
-# def update(conn):
-#     print("Update")
-#     cursor = conn.cursor()
-#     cursor.execute("INSERT INTO vehicle VALUES (?,?,?,?,?,?,?);", (4, "Iveco", 2019, 100000, 2000, 1000, 1))
-#     conn.commit()
-#     read(conn) 
-
-# #delete
-# def delete(conn):
-#     print("Delete")
-#     cursor = conn.cursor()
-#     cursor.execute("DELETE FROM vehicle WHERE vehicle_id = 4")
-#     conn.commit()
-#     read(conn)  
-
-
-# read(conn,"vehicle")
+# #connect the server
+# conn_str = ('DRIVER={SQL Server};'
+#             'SERVER=DESKTOP-HH6PBH8;'
+#             'DATABASE=fleet_mng_vehicles;'
+#             'uid=sa;'
+#             'pwd=hubbabubba2020;'
+#             'Trusted_Connection=yes;'
+#                     )
+# conn = odbc.connect(conn_str)
 
 
 
+# mycursor = conn.cursor()
 
+# mycursor.execute("""
+#                SELECT * FROM [fleet_mng_vehicles].[dbo].[vehicle]
+#                """)
 
+# rows = mycursor.fetchall()
 
+# for row in rows:
+#     print(row)
 
-#server name DESKTOP-HH6PBH8
-#database name fleet_mng_vehicles
