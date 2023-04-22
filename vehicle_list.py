@@ -1,11 +1,11 @@
-from database.dbcon import dbconnection
+from dbcon import DBCon
 
 #import list of the vehicles from the database
-class VehicleList(dbconnection):
+class VehicleList(connect):
     def __init__(self):
         super().__init__()
-        self.c.execute("SELECT * FROM vehicle")
-        self.vehicles = self.c.fetchall()
+        self.execute("SELECT * FROM [fleet_mng_vehicles].[dbo].[vehicle]")
+        self.vehicles = self.fetchall()
         self.c.close()
 
     def __del__(self):
