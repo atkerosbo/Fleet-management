@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Atila\Documents\GitHub\Fleet-management\.fleet"
+VIRTUAL_ENV="C:\Users\ab\Documents\GitHub\Fleet-management\.fleet"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

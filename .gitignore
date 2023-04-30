@@ -1,0 +1,5 @@
+.fleet/pyvenv.cfg
+.fleet/pyvenv.cfg
+.fleet/Lib/site-packages/_distutils_hack/__pycache__/__init__.cpython-311.pyc
+.fleet/Scripts/activate
+__pycache__/dbcon.cpython-311.pyc
